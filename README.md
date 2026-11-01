@@ -75,7 +75,11 @@ A pasta `diagramas` reúne os oito diagramas do artigo.
 - `07-configuracao.png`: a comparação com think=false.
 - `08-nexo.png`: os resultados parciais do ensaio com o Nexo.
 
-Os diagramas 5 e 6 foram regerados a partir do mesmo `ensaios.csv` do pacote, com acentuação completa e com os nomes de cenário usados no artigo. O script está em `diagramas/regerar_graficos.py`. Os diagramas dentro do ZIP v0.5.0 mantêm as versões originais.
+Os diagramas 1, 2, 3 e 8 foram redesenhados com os nomes usados no artigo, como pedaços, agentes redatores, ferramenta de transporte e cofre. As fontes graphviz estão em `diagramas/fontes-dot`.
+
+Os diagramas 5 e 6 foram regerados a partir do mesmo `ensaios.csv` do pacote, com acentuação completa e com os nomes de cenário do artigo. O script está em `diagramas/regerar_graficos.py`.
+
+Os diagramas dentro do ZIP v0.5.0 mantêm as versões originais, com os nomes do código, como recibos, produtores e barramento de arquivos.
 
 ## Escopo e limites
 

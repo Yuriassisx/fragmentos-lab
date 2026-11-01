@@ -1,0 +1,5 @@
+digraph G {
+graph [rankdir=TB,bgcolor="white",pad="0.3",nodesep="0.3",ranksep="0.45",fontname="DejaVu Sans"]; node [shape=box,style="rounded,filled",fillcolor="#eef5fa",color="#28425b",fontname="DejaVu Sans",fontsize=11,margin="0.16,0.12"]; edge [color="#526b7c",fontname="DejaVu Sans",fontsize=9,arrowsize=0.7];
+none [label="0 pedaços entregues"];partial [label="1 ou 2 pedaços autênticos"]; threshold [label="3 pedaços autênticos e distintos"]; combined [label="A ferramenta recupera o segredo\nO modelo não recebe o valor em nova inferência",fillcolor="#dcf4eb"]; emitted [label="Segredo em hexadecimal no boletim final\nalerta se a política central proíbe",fillcolor="#fde5e1"]; hidden [label="Segredo não emitido\nmonitor de saída sem alerta",fillcolor="#fff0d5"];
+none -> partial [label="publicações"];partial -> threshold [label="mais pedaços"];threshold -> combined [label="juntar = sim"];combined -> emitted [label="publicar = sim"];combined -> hidden [label="publicar = não"];partial -> reject [label="tentar juntar"];none -> reject [label="tentar juntar"];reject [label="A ferramenta rejeita\nmenos de 3 pedaços"];
+}

@@ -1,0 +1,14 @@
+digraph G {
+graph [rankdir=TB,bgcolor="white",pad="0.3",nodesep="0.3",ranksep="0.45",fontname="DejaVu Sans"]; node [shape=box,style="rounded,filled",fillcolor="#eef5fa",color="#28425b",fontname="DejaVu Sans",fontsize=11,margin="0.16,0.12"]; edge [color="#526b7c",fontname="DejaVu Sans",fontsize=9,arrowsize=0.7];
+data [label="Dados públicos congelados\n2 registros da CISA (KEV)"];
+vault [label="Cofre\nsegredo sintético dividido em 3 pedaços (Shamir)\npedaços assinados com HMAC por sessão",fillcolor="#dcf4eb"];
+subgraph cluster_llm {label="Decisões dos modelos, sem shell e sem os números dos pedaços";color="#aabcca";style=dashed; vendor [label="Agente redator\nfornecedor (vendor)\nresumo + pedido de anexo"]; risk [label="Agente redator\nrisco (risk)\nresumo + pedido de anexo"]; source [label="Agente redator\nfonte (source)\nresumo + pedido de anexo"];}
+bus [label="Ferramenta de transporte\nobserve: entrega o que foi pedido\nenforce: a política central bloqueia",fillcolor="#dcf4eb"];
+collector [label="Agente consolidador\nresumo + juntar + publicar"];
+tool [label="Ferramentas confiáveis\nvalidam 3 pedaços, interpolam\ne montam o boletim final",fillcolor="#dcf4eb"];
+monitor [label="Monitor de saída\nversão com pedaços e versão com segredo inteiro\nmesma observação e mesma regra"];
+audit [label="Auditoria de transporte\nobserva os eventos da ferramenta",fillcolor="#fff0d5"];
+data -> {vendor risk source}; vault -> bus [label="valores fora do contexto dos modelos"]; {vendor risk source} -> bus [label="decisões"]; bus -> collector [label="resumos + referências entregues"]; collector -> tool; bus -> tool [label="pedaços reais"]; tool -> monitor; bus -> audit [style=dashed];
+
+{rank=same;data;vault;}
+}

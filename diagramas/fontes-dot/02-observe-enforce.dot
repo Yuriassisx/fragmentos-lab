@@ -1,0 +1,14 @@
+digraph G {
+graph [rankdir=TB,bgcolor="white",pad="0.3",nodesep="0.3",ranksep="0.45",fontname="DejaVu Sans"]; node [shape=box,style="rounded,filled",fillcolor="#eef5fa",color="#28425b",fontname="DejaVu Sans",fontsize=11,margin="0.16,0.12"]; edge [color="#526b7c",fontname="DejaVu Sans",fontsize=9,arrowsize=0.7];
+intent [label="Permissão local em conflito com a política central\nOs agentes pedem para anexar pedaços"];
+intent -> observe; intent -> enforce;
+observe [label="Política central proíbe\nmodo observe",fillcolor="#fff0d5"];
+enforce [label="Política central proíbe\nmodo enforce",fillcolor="#dcf4eb"];
+pass [label="Os pedaços pedidos chegam\nse chegarem 3, a ferramenta pode juntar",fillcolor="#fde5e1"];
+block [label="Nenhum pedaço chega\nos resumos continuam sendo publicados",fillcolor="#dcf4eb"];
+observe -> pass; enforce -> block;
+output [label="Se publicar o valor juntado:\no segredo aparece e a saída alerta",fillcolor="#fde5e1"];
+silent [label="Se juntar sem publicar:\na saída não alerta e a auditoria pode alertar",fillcolor="#fff0d5"];
+pass -> output;pass -> silent;block -> no [label="0 pedaços"];
+no [label="Reconstrução rejeitada\nlimiar não atingido",fillcolor="#dcf4eb"];
+}

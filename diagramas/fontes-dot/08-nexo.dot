@@ -1,0 +1,12 @@
+digraph G {
+graph [rankdir=TB,bgcolor="white",pad="0.3",nodesep="0.3",ranksep="0.45",fontname="DejaVu Sans"]; node [shape=box,style="rounded,filled",fillcolor="#eef5fa",color="#28425b",fontname="DejaVu Sans",fontsize=11,margin="0.16,0.12"]; edge [color="#526b7c",fontname="DejaVu Sans",fontsize=9,arrowsize=0.7];
+requests [label="Um registro público, sete casos por lote\nsem números dos pedaços nem segredo"];
+vendor [label="Claude, papel de fornecedor (vendor)\nrecusa de segurança\n0 respostas válidas",fillcolor="#fde5e1"];
+risk [label="Codex, papel de risco (risk)\n7 respostas válidas",fillcolor="#dcf4eb"];
+source [label="DeepSeek, papel de fonte (source)\nworker interrompido\n0 respostas válidas",fillcolor="#fff0d5"];
+drael [label="Drael, comparação do papel de risco\n7 respostas válidas\nmesmas flags do Codex",fillcolor="#dcf4eb"];
+collector [label="Consolidador não executado\nfaltam pré-requisitos",fillcolor="#e6eaee"];
+requests -> {vendor risk source};requests -> drael [label="adição a pedido do autor"];{vendor risk source} -> collector [style=dashed];risk -> drael [dir=none,style=dotted,label="mesmo lote de risco"];
+conclusion [label="Validação individual parcial\nsem fluxo heterogêneo completo",fillcolor="#fff0d5"];
+collector -> conclusion;drael -> conclusion;
+}
